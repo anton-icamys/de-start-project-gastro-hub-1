@@ -4,7 +4,7 @@ BEGIN;
 
 WITH UpdatedPrices AS (
     SELECT
-        r.id,
+        r.restaurant_uuid,
         r.menu,
         jsonb_set(
             r.menu,
@@ -25,7 +25,7 @@ SET
 FROM
     UpdatedPrices up
 WHERE
-    cr.id = up.id;
+    cr.restaurant_uuid = up.restaurant_uuid;
 
 COMMIT;
 
